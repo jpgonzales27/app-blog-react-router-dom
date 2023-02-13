@@ -4,6 +4,8 @@ import AcercaDe from "./compoentes/AcercaDe";
 import Blog from "./compoentes/Blog";
 import PaginaInicio from "./compoentes/PaginaInicio";
 import styled from "styled-components";
+import Post from "./compoentes/Post";
+import Error404 from "./compoentes/Error404";
 
 const App = () => {
   return (
@@ -43,8 +45,10 @@ const App = () => {
              *
              * la propiedad element es el componente que se moestrar cuando ingresemos al path seleccionado
              */}
+            <Route path="*" element={<Error404 />} />
             <Route path="/" element={<PaginaInicio />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/post/:id" element={<Post />} />
             <Route path="/acerca-de" element={<AcercaDe />} />
           </Routes>
         </Main>
