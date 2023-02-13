@@ -3,6 +3,7 @@ import { BrowserRouter, NavLink, Routes, Route } from "react-router-dom";
 import AcercaDe from "./compoentes/AcercaDe";
 import Blog from "./compoentes/Blog";
 import PaginaInicio from "./compoentes/PaginaInicio";
+import styled from "styled-components";
 
 const App = () => {
   return (
@@ -15,10 +16,10 @@ const App = () => {
      * con react-router-dom
      */
     <BrowserRouter>
-      <div>
-        <header>
-          <h1>Mi blog personal</h1>
-          <nav>
+      <ContenedorPrincipal>
+        <Header>
+          <Titulo>Mi blog personal</Titulo>
+          <Menu>
             {/* para hacer uso de los links en react-router-dom debemos hacer uso del componente NavLink
               este componente reemplaza a la la etiquera <a> y la propiedad "to" reemplaza al href
               </a><a href="/">Inicio</a>
@@ -27,9 +28,9 @@ const App = () => {
             <NavLink to="/">Inicio</NavLink>
             <NavLink to="/blog">Blog</NavLink>
             <NavLink to="/acerca-de">Acerca de</NavLink>
-          </nav>
-        </header>
-        <main>
+          </Menu>
+        </Header>
+        <Main>
           {/**
            * Ahora para el contenido que tendra que mostrarse cuando agamos click en nuestro NavLink
            * debemos hacer uso del compoente <Routes></Routes> dentro del cual debemos definir todas
@@ -46,10 +47,51 @@ const App = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/acerca-de" element={<AcercaDe />} />
           </Routes>
-        </main>
-      </div>
+        </Main>
+      </ContenedorPrincipal>
     </BrowserRouter>
   );
 };
+
+const ContenedorPrincipal = styled.div`
+  padding: 40px;
+  width: 90%;
+  max-width: 700px;
+`;
+
+const Main = styled.main`
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(129, 129, 129, 0.1);
+`;
+
+const Header = styled.header`
+  text-align: center;
+  margin-bottom: 40px;
+`;
+
+const Titulo = styled.h1`
+  margin-bottom: 10px;
+  font-size: 26px;
+  text-transform: uppercase;
+`;
+
+const Menu = styled.nav`
+  a {
+    text-decoration: none;
+    color: #165168;
+    margin: 0 10px;
+  }
+
+  a:hover {
+    color: #191681;
+  }
+
+  a.active {
+    border-bottom: 2px solid #165168;
+    padding-bottom: 3px;
+  }
+`;
 
 export default App;
