@@ -44,6 +44,13 @@ const App = () => {
              * para saber que Route moestrar
              *
              * la propiedad element es el componente que se moestrar cuando ingresemos al path seleccionado
+             *
+             * el path * hace referencia a cualquier ruta que no este esepecificada en nuestros Route
+             * en este caso la usamos para mostrar la pagina de error 404
+             *
+             * el path /post/:id el identificad id lo usaremos para enviar el valor en los parametros
+             * el cual recuperaremos con el hook useParams como si fuera un objeto donde la key sera el
+             * nombre que le asigamos en este caso id
              */}
             <Route path="*" element={<Error404 />} />
             <Route path="/" element={<PaginaInicio />} />
